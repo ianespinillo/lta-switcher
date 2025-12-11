@@ -300,7 +300,22 @@ fn install_competition(competition_id: i32, state: State<AppState>) -> Result<()
         }
     }
 }
+#[tauri::command]
+fn remove_current_scoreboard() -> Result<String, String> {
+    let target_path_str = r"C:\FC 26 Live Editor\mods\root\Legacy\data\ui\game\overlays\Generic\overlay_9002.BIG";
+    let target_path = Path::new(target_path_str);
 
+    if !target_path.exists() {
+        // Si no existe, no pasa nada, ya está "limpio"
+        return Ok("No había ningún scoreboard aplicado.".to_string());
+    }
+
+    // Borramos el archivo
+    fs::remove_file(target_path)
+        .map_err(|e| format!("Error al borrar el archivo: {}", e))?;
+
+    Ok("Scoreboard eliminado. Se usará el original del juego.".to_string())
+}
 fn main() {
     // 1. Inicializar DB
     let mut db_connection = init_db();
@@ -320,7 +335,8 @@ fn main() {
         .invoke_handler(tauri::generate_handler![
             get_countries,
             get_competitions_by_country,
-            install_competition
+            install_competition,
+            remove_current_scoreboard
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

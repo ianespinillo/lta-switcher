@@ -30,8 +30,7 @@ function App() {
   const [selectedCountryId, setSelectedCountryId] = useState<string>("");
   const [selectedCompId, setSelectedCompId] = useState<string>("");
 
-  const [_, setSelectedCountryData] =
-    useState<Country | null>(null);
+  const [_, setSelectedCountryData] = useState<Country | null>(null);
   const [selectedCompData, setSelectedCompData] = useState<Competition | null>(
     null
   );
@@ -64,7 +63,19 @@ function App() {
         .catch(console.error);
     }
   };
-
+  const handleRemove = () =>{
+    const promise = invoke('remove_current_scoreboard')
+    toast.promise(promise, {
+    loading: 'Restaurando original...',
+    success: (msg) => {
+      // Opcional: Limpiamos la selección visual
+      // setSelectedCompId(""); 
+      // setSelectedCompData(null);
+      return `${msg}`;
+    },
+    error: (err) => `Error: ${err}`,
+  });
+  }
   const handleCompetitionChange = (compIdStr: string) => {
     setSelectedCompId(compIdStr);
     const compId = parseInt(compIdStr);
@@ -104,9 +115,9 @@ function App() {
   };
 
   // --- HELPER PARA IMÁGENES ---
-  const arrayToUrl = (byteArray: number[], type: string='image,png') => {
+  const arrayToUrl = (byteArray: number[], type: string = "image,png") => {
     if (!byteArray || byteArray.length === 0) return "";
-    const blob = new Blob([new Uint8Array(byteArray)],{type});
+    const blob = new Blob([new Uint8Array(byteArray)], { type });
     return URL.createObjectURL(blob);
   };
 
@@ -118,12 +129,7 @@ function App() {
     <div className="h-full w-full text-white font-sans relative overflow-hidden bg-[#0a0a0a] flex items-center justify-center p-8">
       {/* 1. CAPA DE FONDO (Degradado Violeta/Azul a Verde) */}
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-950 via-[#0a0a0a] to-emerald-950 z-0"></div>
-      <Toaster 
-        theme="dark" 
-        richColors 
-        position="bottom-right" 
-        expand={true}
-      />
+      <Toaster theme="dark" richColors position="bottom-right" expand={true} />
       {/* 2. CAPA DE MALLA (Patrón Hexagonal sutil) */}
       <div
         className="absolute inset-0 opacity-20 z-0 mix-blend-overlay pointer-events-none"
@@ -177,7 +183,7 @@ function App() {
                     >
                       <div className="flex items-center gap-3">
                         <img
-                          src={arrayToUrl(c.flag_blob, 'image/svg+xml')}
+                          src={arrayToUrl(c.flag_blob, "image/svg+xml")}
                           className="w-8 h-5 object-cover rounded shadow-sm"
                           alt=""
                         />
@@ -295,6 +301,13 @@ function App() {
 
         {/* FOOTER CON BOTONES DE ACCIÓN */}
         <CardFooter className="border-t border-white/5 bg-black/20 p-6 flex justify-end gap-4">
+          <Button
+          onClick={handleRemove}
+            variant="outline"
+            className="border-white/10 hover:bg-white/5 text-white hover:text-white px-8 h-12 text-base rounded-xl"
+          >
+            Cancelar
+          </Button>
           <Button
             onClick={handleApply}
             disabled={!selectedCompData || isApplying}
