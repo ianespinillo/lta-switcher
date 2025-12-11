@@ -14,24 +14,11 @@ jobs:
       fail-fast: false
       matrix:
         platform: [windows-latest]
-
     runs-on: ${{ matrix.platform }}
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 9
-          run_install: false
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20.x'
-          cache: 'pnpm'
 
       - name: Rust setup
         uses: dtolnay/rust-toolchain@stable
@@ -41,19 +28,24 @@ jobs:
         with:
           workspaces: './src-tauri -> target'
 
+      - name: Sync node version and setup cache
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+
       - name: Install frontend dependencies
-        run: pnpm install
-
+        # If you don't have `beforeBuildCommand` configured you may want to build your frontend here too.
+        run: npm install
       - name: Generate icons
-        run: pnpm tauri icon ./src-tauri/icons/icon.png
-
+        run: npm run tauri icon ./src-tauri/icons/icon.png
       - name: Build the app
         uses: tauri-apps/tauri-action@v0
+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tagName: ${{ github.ref_name }}
-          releaseName: 'Scoreboard Switcher v__VERSION__'
+          tagName: ${{ github.ref_name }} # This only works if your workflow triggers on new tags.
+          releaseName: 'Scoreboard Switcher v__VERSION__' # tauri-action replaces \_\_VERSION\_\_ with the app version.
           releaseBody: 'See the assets to download and install this version.'
           releaseDraft: true
           prerelease: false
