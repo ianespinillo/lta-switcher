@@ -1,0 +1,36 @@
+country,competition,country_flag,competition_logo,file
+Argentina,Copa Argentina,assets/flags/arg.svg,assets/logos/copa_arg.png,assets/files/arg/copa_2024.big
+Argentina,Liga Profesional de Futbol,assets/flags/arg.svg,assets/logos/lpf.png,assets/files/arg/lpf_2024.big
+Argentina,Primera Nacional,assets/flags/arg.svg,assets/logos/pn.png,assets/files/arg/pn.big
+Argentina,Supercopa Argentina,assets/flags/arg.svg,assets/logos/sup_arg.png,assets/files/arg/sp.big
+Brasil,Brasileirao,assets/flags/br.svg,assets/logos/bra.png,assets/files/bra/br.big
+Brasil,Serie B,assets/flags/br.svg,assets/logos/brb.png,assets/files/bra/br.big
+Brasil,Copa do Brasil,assets/flags/br.svg,assets/logos/copa_bra.png,assets/files/bra/copa_br.big
+Brasil,Supercopa do Brasil,assets/flags/br.svg,assets/logos/sup_br.png,assets/files/bra/sup_br.big
+Chile,Liga Chile,assets/flags/cl.svg,assets/logos/chi_a.png,assets/files/chi/chia.big
+Chile,Serie B,assets/flags/cl.svg,assets/logos/chi_b.png,assets/files/chi/chib.big
+Chile,Copa de Chile,assets/flags/cl.svg,assets/logos/copa_ch.png,assets/files/chi/copa_chi.big
+Chile,Supercopa de Chile,assets/flags/cl.svg,assets/logos/sup_cl.png,assets/files/chi/sup_cl.big
+Ecuador,Liga Pro A,assets/flags/ec.svg,assets/logos/eca.png,assets/files/ecu/eca.big
+Ecuador,Liga Pro B,assets/flags/ec.svg,assets/logos/ecb.png,assets/files/ecu/ecb.big
+Ecuador,Copa Ecuador,assets/flags/ec.svg,assets/logos/copa_ec.png,assets/files/ecu/copa_ec.big
+Ecuador,Supercopa Ecuador,assets/flags/ec.svg,assets/logos/sup_ec.png,assets/files/ecu/sup.big
+Bolivia,Primera Division,assets/flags/bo.svg,assets/logos/bola.png,assets/files/bol/bola.big
+Bolivia,Copa Paceña,assets/flags/bo.svg,assets/logos/copa_bo.png,assets/files/bol/copa.big
+Colombia,Liga BetPlay,assets/flags/co.svg,assets/logos/betplay.png,assets/files/col/betplay.big
+Colombia,Torneo BetPlay,assets/flags/co.svg,assets/logos/betplayb.png,assets/files/col/betplay.big
+Peru,Liga 1,assets/flags/pe.svg,assets/logos/l1p.png,assets/files/per/l1.big
+Uruguay,Primera Division,assets/flags/uy.svg,assets/logos/pdu.png,assets/files/uy/pd.big
+Mexico,Liga MX,assets/flags/mx.svg,assets/logos/lmx.png,assets/files/mx/lmx.big
+Venezuela,Liga FUTVE,assets/flags/ve.svg,assets/logos/lfv.png,assets/files/ve/lfv.big
+Paraguay,Primera Division,assets/flags/py.svg,assets/logos/pdp.png,assets/files/py/pd.big
+Internacional,Concachampions,assets/flags/fifa.svg,assets/logos/cnc.png,assets/files/fifa/cnc.big
+Internacional,Leagues cup,assets/flags/fifa.svg,assets/logos/lgc.png,assets/files/fifa/lgc.big
+Internacional,AFC Champions League,assets/flags/fifa.svg,assets/logos/acl.png,assets/files/fifa/acl.big
+Internacional,Mundial (Generico),assets/flags/fifa.svg,assets/logos/wc.png,assets/files/fifa/wc.big
+Internacional,Mundial 2026,assets/flags/fifa.svg,assets/logos/wc26.png,assets/files/fifa/wc26.big
+Internacional,Eurocopa 2021,assets/flags/fifa.svg,assets/logos/ec.png,assets/files/fifa/ec.big
+Internacional,Eliminatorias (Argentina),assets/flags/fifa.svg,assets/logos/fqf.png,assets/files/fifa/afqf.big
+Internacional,Eliminatorias (Colombia),assets/flags/fifa.svg,assets/logos/fqf.png,assets/files/col/betplay.big
+Internacional,Copa America,assets/flags/fifa.svg,assets/logos/ca.png,assets/files/fifa/ca.big
+Internacional,Mundial de Clubes,assets/flags/fifa.svg,assets/logos/cwc.png,assets/files/fifa/cwc.big
