@@ -28,24 +28,42 @@ jobs:
         with:
           workspaces: './src-tauri -> target'
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: false
+
       - name: Sync node version and setup cache
         uses: actions/setup-node@v4
         with:
           node-version: '20.x'
+          cache: 'pnpm'
+
+      # Este paso es redundante si usas setup-node con cache: 'pnpm', 
+      # pero lo dejo comentado por si acaso prefieres tu método manual.
+      # - name: Get pnpm store directory ...
 
       - name: Install frontend dependencies
-        # If you don't have `beforeBuildCommand` configured you may want to build your frontend here too.
-        run: npm install
+        run: pnpm install
+
       - name: Generate icons
-        run: npm run tauri icon ./src-tauri/icons/icon.png
+        run: pnpm tauri icon ./src-tauri/icons/icon.png
+
+      # --- FIX: Forzar pnpm en el PATH de Windows ---
+      - name: Ensure pnpm is in PATH (Windows Fix)
+        run: npm install -g pnpm
+
       - name: Build the app
         uses: tauri-apps/tauri-action@v0
-
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tagName: ${{ github.ref_name }} # This only works if your workflow triggers on new tags.
-          releaseName: 'Scoreboard Switcher v__VERSION__' # tauri-action replaces \_\_VERSION\_\_ with the app version.
+          tagName: ${{ github.ref_name }}
+          releaseName: 'Scoreboard Switcher v__VERSION__'
           releaseBody: 'See the assets to download and install this version.'
           releaseDraft: true
           prerelease: false
+          args: --verbose
+          # FIX: Eliminamos tauriScript: npx tauri.
+          # Al detectar pnpm-lock.yaml, la acción ejecutará automáticamente: "pnpm tauri build"

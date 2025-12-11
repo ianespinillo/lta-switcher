@@ -30,7 +30,7 @@ function App() {
   const [selectedCountryId, setSelectedCountryId] = useState<string>("");
   const [selectedCompId, setSelectedCompId] = useState<string>("");
 
-  const [selectedCountryData, setSelectedCountryData] =
+  const [_, setSelectedCountryData] =
     useState<Country | null>(null);
   const [selectedCompData, setSelectedCompData] = useState<Competition | null>(
     null
