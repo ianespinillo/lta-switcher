@@ -274,7 +274,7 @@ fn install_competition(competition_id: i32, state: State<AppState>) -> Result<()
 
     // 3. Ruta
     let target_path_str =
-        r"C:\FC 26 Live Editor\mods\root\Legacy\data\ui\game\overlays\Generic\overlay_9002.BIG";
+        r"C:\FC 26 Live Editor\mods\Legacy\data\ui\game\overlays\Generic\overlay_9002.BIG";
     let target_path = Path::new(target_path_str);
 
     println!("📂 [DEBUG] Intentando escribir en: {:?}", target_path);
@@ -302,7 +302,7 @@ fn install_competition(competition_id: i32, state: State<AppState>) -> Result<()
 }
 #[tauri::command]
 fn remove_current_scoreboard() -> Result<String, String> {
-    let target_path_str = r"C:\FC 26 Live Editor\mods\root\Legacy\data\ui\game\overlays\Generic\overlay_9002.BIG";
+    let target_path_str = r"C:\FC 26 Live Editor\mods\Legacy\data\ui\game\overlays\Generic\overlay_9002.BIG";
     let target_path = Path::new(target_path_str);
 
     if !target_path.exists() {
